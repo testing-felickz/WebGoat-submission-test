@@ -30,7 +30,7 @@ jobs:
       - name: 'Checkout repository'
         uses: actions/checkout@v4
       - name: 'Dependency Review - felickz patched version testing'
-        uses: actions/dependency-review-action@forks-felickz:main
+        uses: actions/dependency-review-action@2af9bac14d6af52a472869800c3dc49037929728 #aka forks-felickz:main      
         with:
           comment-summary-in-pr: always  
         # Commonly enabled options, see https://github.com/actions/dependency-review-action#configuration-options for all available options.
