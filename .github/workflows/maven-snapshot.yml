@@ -1,0 +1,23 @@
+name: "Maven Snapshot"
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: '44 6 * * 3'
+jobs:
+  maven-dependency-submission:
+    runs-on: ubuntu-latest
+    # The Dependency Submission API requires write permission
+    permissions:
+      contents: write
+    steps:          
+      - name: 'Checkout Repository'
+        uses: actions/checkout@v5
+      # Uses com.github.ferstl:depgraph-maven-plugin plugin to generate JSON output of the complete dependency graph
+      # which is then processed and submitted using the Dependency Submission Toolkit to the GitHub repository
+      # Submit Maven Dependency Tree to GitHub
+      - name: Maven Dependency Tree Dependency Submission
+        uses: advanced-security/maven-dependency-submission-action@v5
